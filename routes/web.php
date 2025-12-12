@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts/{id}', function ($id = "9") {
+Route::get('/posts/{id}', function ($id) {
     return "Listado de posts, " . $id;
 }) -> Where('id' . "[0-9]*");
 
@@ -19,3 +19,5 @@ Route::get('fecha', function () {
 Route::get('saluda/{nombre?}', function ($nombre = "Messi"){
     return "Hola, " . $nombre;
 }) ->Where('nombre', "[A-Za-z]+");
+
+?>
