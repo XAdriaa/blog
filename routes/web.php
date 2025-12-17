@@ -11,7 +11,7 @@ Route::get('/Plantilla', function () {
     return view('plantilla');
 }) ->name('plantilla');
 
-Route::get('/posts/{id?}', function ($id = 4) {
+Route::get('/views/posts/listado.blade.php', function ($id = 4) {
     return "Listado de posts, " . $id;
 }) -> Where('id', "[0-9]") ->name('posts_listado');
 
