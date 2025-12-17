@@ -4,11 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}) ->name('inicio');
 
-Route::get('/posts/{id}', function ($id) {
+//Ruta plantilla.blade.php
+Route::get('/Plantilla', function () {
+    return view('plantilla');
+}) ->name('plantilla');
+
+Route::get('/posts/{id?}', function ($id = 4) {
     return "Listado de posts, " . $id;
-}) -> Where('id' . "[0-9]*");
+}) -> Where('id', "[0-9]") ->name('posts_listado');
 
 //Ruta simple
 Route::get('fecha', function () {
