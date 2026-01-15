@@ -11,7 +11,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('posts.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show($id)
+    {
+        return view('posts.show', compact('id'));
     }
 
     /**
@@ -19,31 +27,12 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return redirect()->route('inicio');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function edit($id)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return redirect()->route('inicio');
     }
 
     /**

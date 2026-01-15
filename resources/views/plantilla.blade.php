@@ -28,6 +28,9 @@
         @include('partials.nav');
     </header>
 
+    <div style="text-align: right;">
+    {{ fechaActual('d/m/Y') }}
+    </div>
 
     
 </body>
