@@ -4,23 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Post;
+
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('posts.index');
-    }
+{
+    $posts = Post::orderBy('titulo', 'ASC')->paginate(5);
+    return view('posts.index', compact('posts'));
+}
+
 
     /**
      * Display the specified resource.
      */
     public function show($id)
-    {
-        return view('posts.show', compact('id'));
-    }
+{
+    $post = Post::findOrFail($id);
+    return view('posts.show', compact('post'));
+}
+
 
     /**
      * Show the form for creating a new resource.
@@ -46,8 +52,33 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function destroy($id)
+{
+    Post::findOrFail($id)->delete();
+    $posts = Post::orderBy('titulo', 'ASC')->paginate(5);
+    return view('posts.index', compact('posts'));
+}
+
+public function nuevoPrueba()
+{
+    Post::create([
+        'titulo' => 'Título ' . rand(1, 1000),
+        'contenido' => 'Contenido ' . rand(1, 1000),
+    ]);
+
+    return redirect()->route('posts.index');
+}
+
+public function editarPrueba($id)
+{
+    $post = Post::findOrFail($id);
+
+    $post->update([
+        'titulo' => 'Título ' . rand(1, 1000),
+        'contenido' => 'Contenido ' . rand(1, 1000),
+    ]);
+
+    return redirect()->route('posts.index');
+}
+
 }

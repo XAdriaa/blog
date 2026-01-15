@@ -29,4 +29,8 @@ Route::get('saluda/{nombre?}', function ($nombre = "Messi"){
 Route::resource('posts', PostController::class)
     ->only(['index', 'show', 'create', 'edit']);
 
+Route::get('/posts/nuevoPrueba', [PostController::class, 'nuevoPrueba']);
+
+Route::get('/posts/editarPrueba/{id}', [PostController::class, 'editarPrueba']);
+
 ?>
