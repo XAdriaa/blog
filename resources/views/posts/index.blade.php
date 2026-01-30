@@ -8,7 +8,7 @@
 <body>
     <h1>Listado de posts</h1>
 
-    @forelse ($posts as $post)
+    @foreach ($posts as $post)
     <article>
         <h3>{{ $post->titulo }}</h3>
 
@@ -17,13 +17,13 @@
         <form action="{{ route('posts.destroy', $post) }}" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
-            <button>Borrar</button>
+            <button type="submit">Borrar</button>
         </form>
     </article>
     <hr>
     @empty
     <p>No hay posts</p>
-    @endforelse
+    @endforeach
 
     {{ $posts->links() }}
 </body>

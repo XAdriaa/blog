@@ -26,8 +26,7 @@ Route::get('saluda/{nombre?}', function ($nombre = "Messi"){
     return "Hola, " . $nombre;
 }) ->Where('nombre', "[A-Za-z]+");
 
-Route::resource('posts', PostController::class)
-    ->only(['index', 'show', 'create', 'edit']);
+Route::resource('posts', PostController::class);
 
 Route::get('/posts/nuevoPrueba', [PostController::class, 'nuevoPrueba']);
 
